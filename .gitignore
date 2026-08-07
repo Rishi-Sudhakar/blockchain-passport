@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+
+# Go
+apps/api/bin/
+apps/api/*.exe
+
+# Node (apps/web has its own, this catches anything at the root)
+node_modules/

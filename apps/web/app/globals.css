@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+  /* Base surface layers — near-black, not pure black, so glass has something to refract. */
+  --bg-0: #05070a;
+  --bg-1: #0b0f16;
+  --bg-2: #11161f;
+
+  --ink-0: #f5f7fa;
+  --ink-1: #c7ccd6;
+  --ink-2: #8b93a3;
+  --ink-3: #5b6272;
+
+  /* Two solid accents, used separately (never blended into a gradient):
+     teal for primary actions/success, violet for secondary emphasis. */
+  --accent-teal: #2ee6d1;
+  --accent-teal-ink: #04211d;
+  --accent-violet: #8b7cf5;
+
+  --success: #35d68a;
+  --warning: #f2b84b;
+  --danger: #f0566b;
+
+  /* Glass surface: translucent solid fill + hairline solid border + blur scale. */
+  --glass-fill: rgba(255, 255, 255, 0.045);
+  --glass-fill-strong: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-strong: rgba(255, 255, 255, 0.18);
+  --glass-highlight: rgba(255, 255, 255, 0.65);
+
+  --blur-sm: 12px;
+  --blur-md: 24px;
+  --blur-lg: 40px;
+
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 32px;
+
+  --shadow-ambient: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+  --shadow-inset-hairline: inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
+  --shadow-inset-hairline-strong: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@theme inline {
+  --color-bg-0: var(--bg-0);
+  --color-bg-1: var(--bg-1);
+  --color-bg-2: var(--bg-2);
+  --color-ink-0: var(--ink-0);
+  --color-ink-1: var(--ink-1);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-teal-ink: var(--accent-teal-ink);
+  --color-accent-violet: var(--accent-violet);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--glass-border);
+}
+
+html,
+body {
+  background: var(--bg-0);
+  color: var(--ink-0);
+}
+
+body {
+  font-family: var(--font-sans);
+  position: relative;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.92);
+  color: #05070a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* Skeleton loading: a solid-color opacity pulse rather than a sweeping
+   gradient band — same "it's alive" read, no gradient involved. */
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
