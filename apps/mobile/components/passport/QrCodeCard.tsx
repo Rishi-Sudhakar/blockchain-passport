@@ -4,8 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { API_URL } from "@/lib/api/client";
-import { colors } from "@/theme/tokens";
+import { brutal, colors } from "@/theme/tokens";
 
 export function QrCodeCard({ publicCode }: { publicCode: string }) {
   const [copied, setCopied] = useState(false);
@@ -22,20 +21,27 @@ export function QrCodeCard({ publicCode }: { publicCode: string }) {
   return (
     <GlassCard style={styles.card}>
       <View style={styles.qrWrap}>
-        <QRCode value={value} size={140} backgroundColor="#ffffff" color={colors.bg0} />
+        {/* Foreground must be a dark color for the code to actually scan —
+            this used to read colors.bg0, which was black under the old dark
+            theme but is cream now, silently making the QR unreadable. */}
+        <QRCode value={value} size={140} backgroundColor="#ffffff" color={colors.ink0} />
       </View>
       <Text style={styles.code}>{publicCode}</Text>
       <Text style={styles.hint}>Scan to verify this passport publicly</Text>
       <Button title={copied ? "Copied" : "Copy code"} size="sm" variant="glass" onPress={onCopy} />
-      <Text style={styles.apiHint}>{API_URL}</Text>
     </GlassCard>
   );
 }
 
 const styles = StyleSheet.create({
   card: { alignItems: "center", gap: 12 },
-  qrWrap: { backgroundColor: "#fff", padding: 12, borderRadius: 16 },
-  code: { fontFamily: "monospace", fontSize: 13, color: colors.ink1 },
-  hint: { fontSize: 12, color: colors.ink3 },
-  apiHint: { fontSize: 10, color: colors.ink3, opacity: 0.6 },
+  qrWrap: {
+    backgroundColor: "#fff",
+    padding: 12,
+    borderRadius: 16,
+    borderWidth: brutal.borderWidth,
+    borderColor: colors.border,
+  },
+  code: { fontFamily: "monospace", fontSize: 13, fontWeight: "700", color: colors.ink0 },
+  hint: { fontSize: 12, color: colors.ink2 },
 });

@@ -23,7 +23,7 @@ export default function CertificationQueuePage() {
           </>
         )}
         {!isLoading && (items?.length ?? 0) === 0 && (
-          <GlassCard className="text-center text-[13px] text-ink-2">
+          <GlassCard className="text-center text-[13px] font-semibold text-ink-2">
             Nothing waiting for review right now.
           </GlassCard>
         )}
@@ -36,11 +36,11 @@ export default function CertificationQueuePage() {
             >
               <GlassCard interactive className="flex items-center justify-between gap-4">
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-[15px] font-semibold text-ink-0">
+                  <p className="truncate text-[15px] font-extrabold text-ink-0">
                     {item.passport.category === "battery" ? "Battery passport" : item.passport.category}
                   </p>
-                  <p className="mt-0.5 font-mono text-[12px] text-ink-2">{item.passport.publicCode}</p>
-                  <p className="mt-1 text-[12px] text-ink-3">Submitted {formatDate(item.certification.createdAt)}</p>
+                  <p className="mt-0.5 font-mono text-[12px] font-bold text-ink-2">{item.passport.publicCode}</p>
+                  <p className="mt-1 text-[12px] font-semibold text-ink-3">Submitted {formatDate(item.certification.createdAt)}</p>
                 </div>
                 <StatusBadge status={item.certification.status} />
               </GlassCard>

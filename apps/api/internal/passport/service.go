@@ -88,7 +88,15 @@ func (s *Service) canView(user *identity.User, p *Passport) bool {
 	return sameOrg(user, p.OrganizationID)
 }
 
-func (s *Service) ListMine(ctx context.Context, user *identity.User) ([]Passport, error) {
+// ListVisible mirrors canView's rules at list scope: certifiers and admins
+// aren't scoped to an organization, so without this they'd see an empty list
+// the moment a passport they certified left the pending queue — there'd be no
+// way for them to ever find it again. Manufacturers still only see their own
+// organization's passports.
+func (s *Service) ListVisible(ctx context.Context, user *identity.User) ([]Passport, error) {
+	if user.Role == identity.RoleAdmin || user.Role == identity.RoleCertifier {
+		return s.repo.ListAll(ctx)
+	}
 	if user.OrganizationID == nil {
 		return nil, nil
 	}

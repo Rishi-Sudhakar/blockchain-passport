@@ -82,7 +82,7 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
             {step === 0 && (
               <>
                 <GlassCard className="space-y-4">
-                  <p className="text-[13px] font-semibold text-ink-2">Product identifier</p>
+                  <p className="text-[13px] font-extrabold text-ink-2">Product identifier</p>
                   <TextField label="Battery model" {...register("productIdentifier.batteryModel")} error={errors.productIdentifier?.batteryModel?.message} />
                   <TextField label="Serial or batch number" {...register("productIdentifier.serialOrBatch")} error={errors.productIdentifier?.serialOrBatch?.message} />
                   <SelectField
@@ -97,7 +97,7 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
                   />
                 </GlassCard>
                 <GlassCard className="space-y-4">
-                  <p className="text-[13px] font-semibold text-ink-2">Manufacturer</p>
+                  <p className="text-[13px] font-extrabold text-ink-2">Manufacturer</p>
                   <TextField label="Manufacturer name" {...register("manufacturerInfo.name")} error={errors.manufacturerInfo?.name?.message} />
                   <TextField label="EU registration ID" {...register("manufacturerInfo.euRegistrationId")} error={errors.manufacturerInfo?.euRegistrationId?.message} />
                   <TextField label="Manufacturing site" {...register("manufacturerInfo.manufacturingSite")} error={errors.manufacturerInfo?.manufacturingSite?.message} />
@@ -108,7 +108,7 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
             {step === 1 && (
               <>
                 <GlassCard className="space-y-4">
-                  <p className="text-[13px] font-semibold text-ink-2">Materials composition</p>
+                  <p className="text-[13px] font-extrabold text-ink-2">Materials composition</p>
                   <SelectField
                     label="Chemistry"
                     {...register("materialsComposition.chemistry")}
@@ -122,12 +122,12 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
                   />
                 </GlassCard>
                 <GlassCard className="space-y-4">
-                  <p className="text-[13px] font-semibold text-ink-2">Carbon footprint</p>
+                  <p className="text-[13px] font-extrabold text-ink-2">Carbon footprint</p>
                   <TextField label="Total kg CO₂ equivalent" type="number" step="0.01" {...register("carbonFootprint.totalKgCo2Equivalent", { valueAsNumber: true })} error={errors.carbonFootprint?.totalKgCo2Equivalent?.message} />
                   <TextField label="Methodology reference" {...register("carbonFootprint.methodologyReference")} error={errors.carbonFootprint?.methodologyReference?.message} />
                 </GlassCard>
                 <GlassCard className="space-y-4">
-                  <p className="text-[13px] font-semibold text-ink-2">Recycled content</p>
+                  <p className="text-[13px] font-extrabold text-ink-2">Recycled content</p>
                   <div className="grid grid-cols-2 gap-4">
                     <TextField label="Cobalt %" type="number" step="0.1" {...register("recycledContent.cobaltPercent", { valueAsNumber: true })} error={errors.recycledContent?.cobaltPercent?.message} />
                     <TextField label="Lithium %" type="number" step="0.1" {...register("recycledContent.lithiumPercent", { valueAsNumber: true })} error={errors.recycledContent?.lithiumPercent?.message} />
@@ -141,18 +141,18 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
             {step === 2 && (
               <>
                 <GlassCard className="space-y-4">
-                  <p className="text-[13px] font-semibold text-ink-2">Performance &amp; durability</p>
+                  <p className="text-[13px] font-extrabold text-ink-2">Performance &amp; durability</p>
                   <TextField label="Rated capacity (Ah)" type="number" step="0.1" {...register("performanceDurability.ratedCapacityAh", { valueAsNumber: true })} error={errors.performanceDurability?.ratedCapacityAh?.message} />
                   <TextField label="Expected cycle life" type="number" {...register("performanceDurability.expectedCycleLife", { valueAsNumber: true })} error={errors.performanceDurability?.expectedCycleLife?.message} />
                   <TextField label="Warranty (years)" type="number" step="0.5" {...register("performanceDurability.warrantyYears", { valueAsNumber: true })} error={errors.performanceDurability?.warrantyYears?.message} />
                 </GlassCard>
                 <GlassCard className="space-y-4">
-                  <p className="text-[13px] font-semibold text-ink-2">Collection &amp; takeback</p>
+                  <p className="text-[13px] font-extrabold text-ink-2">Collection &amp; takeback</p>
                   <TextField label="Takeback scheme name" {...register("collectionTakeback.takebackSchemeName")} error={errors.collectionTakeback?.takebackSchemeName?.message} />
                   <TextAreaField label="Instructions" {...register("collectionTakeback.instructions")} error={errors.collectionTakeback?.instructions?.message} />
                 </GlassCard>
                 <GlassCard className="space-y-4">
-                  <p className="text-[13px] font-semibold text-ink-2">Dismantling &amp; second life</p>
+                  <p className="text-[13px] font-extrabold text-ink-2">Dismantling &amp; second life</p>
                   <TextAreaField label="Dismantling instructions" {...register("dismantlingSecondLife.dismantlingInstructions")} error={errors.dismantlingSecondLife?.dismantlingInstructions?.message} />
                   <TextAreaField label="Second-life suitability" {...register("dismantlingSecondLife.secondLifeSuitability")} error={errors.dismantlingSecondLife?.secondLifeSuitability?.message} />
                 </GlassCard>
@@ -161,7 +161,7 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
 
             {step === 3 && (
               <GlassCard className="space-y-4">
-                <p className="text-[13px] font-semibold text-ink-2">Due diligence</p>
+                <p className="text-[13px] font-extrabold text-ink-2">Due diligence</p>
                 <TextField label="Policy reference" {...register("dueDiligence.policyReference")} error={errors.dueDiligence?.policyReference?.message} />
                 <TextField label="Last audit date" type="date" {...register("dueDiligence.lastAuditDate")} error={errors.dueDiligence?.lastAuditDate?.message} />
               </GlassCard>
@@ -175,7 +175,7 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
                 <ReviewRow label="Carbon footprint" value={`${v.carbonFootprint.totalKgCo2Equivalent} kg CO₂e`} />
                 <ReviewRow label="Rated capacity" value={`${v.performanceDurability.ratedCapacityAh} Ah`} />
                 <ReviewRow label="Due diligence policy" value={v.dueDiligence.policyReference} />
-                {submitError && <p className="text-[13px] text-danger">{submitError}</p>}
+                {submitError && <p className="text-[13px] font-semibold text-danger">{submitError}</p>}
               </div>
             )}
           </motion.div>
@@ -205,8 +205,8 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
 function ReviewRow({ label, value }: { label: string; value: string }) {
   return (
     <GlassCard className="flex items-center justify-between py-3">
-      <span className="text-[13px] text-ink-2">{label}</span>
-      <span className="text-[14px] font-medium text-ink-0">{value || "—"}</span>
+      <span className="text-[13px] font-semibold text-ink-2">{label}</span>
+      <span className="text-[14px] font-bold text-ink-0">{value || "Not provided"}</span>
     </GlassCard>
   );
 }

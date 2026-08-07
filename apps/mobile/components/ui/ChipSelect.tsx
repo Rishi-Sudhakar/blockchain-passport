@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { colors } from "@/theme/tokens";
+import { brutal, colors } from "@/theme/tokens";
 
 interface ChipSelectProps {
   label: string;
@@ -21,7 +21,7 @@ export function ChipSelect({ label, options, value, onChange }: ChipSelectProps)
               onPress={() => onChange(opt.value)}
               style={[styles.chip, active && styles.chipActive]}
             >
-              <Text style={[styles.chipText, active && styles.chipTextActive]}>{opt.label}</Text>
+              <Text style={[styles.chipText, active && styles.chipTextActive]}>{opt.label.toUpperCase()}</Text>
             </TouchableOpacity>
           );
         })}
@@ -31,19 +31,18 @@ export function ChipSelect({ label, options, value, onChange }: ChipSelectProps)
 }
 
 const styles = StyleSheet.create({
-  label: { fontSize: 13, fontWeight: "500", color: colors.ink2 },
+  label: { fontSize: 13, fontWeight: "700", color: colors.ink2 },
   chip: {
     paddingHorizontal: 14,
     paddingVertical: 9,
     borderRadius: 999,
-    borderWidth: 1,
-    borderColor: colors.glassBorder,
-    backgroundColor: "rgba(255,255,255,0.04)",
+    borderWidth: brutal.borderWidth - 0.5,
+    borderColor: colors.border,
+    backgroundColor: colors.bg1,
   },
   chipActive: {
-    borderColor: "rgba(46,230,209,0.4)",
-    backgroundColor: "rgba(46,230,209,0.14)",
+    backgroundColor: colors.yellow,
   },
-  chipText: { fontSize: 13, fontWeight: "500", color: colors.ink1 },
-  chipTextActive: { color: colors.accentTeal },
+  chipText: { fontSize: 12, fontWeight: "800", color: colors.ink1 },
+  chipTextActive: { color: colors.yellowInk },
 });

@@ -15,7 +15,8 @@
       "infoPlist": {
         "NSCameraUsageDescription": "Passport uses the camera to scan a passport's QR code for verification.",
         "NSFaceIDUsageDescription": "Passport can use Face ID to protect this device's signing key."
-      }
+      },
+      "appleTeamId": "TYU88426S6"
     },
     "android": {
       "package": "com.passport.mobile",
@@ -26,7 +27,11 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "permissions": ["CAMERA"]
+      "permissions": [
+        "CAMERA",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

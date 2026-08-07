@@ -13,43 +13,39 @@ interface GlassSurfaceProps extends HTMLMotionProps<"div"> {
 }
 
 const radiusClass: Record<NonNullable<GlassSurfaceProps["radius"]>, string> = {
-  sm: "rounded-[14px]",
-  md: "rounded-[20px]",
-  lg: "rounded-[28px]",
-  xl: "rounded-[32px]",
+  sm: "rounded-[10px]",
+  md: "rounded-[14px]",
+  lg: "rounded-[18px]",
+  xl: "rounded-[22px]",
 };
 
 const toneClass: Record<GlassTone, string> = {
-  default: "bg-white/[0.045] border-white/[0.1]",
-  strong: "bg-white/[0.08] border-white/[0.18]",
-  subtle: "bg-white/[0.025] border-white/[0.07]",
+  default: "bg-bg-1 border-border",
+  strong: "bg-bg-1 border-border",
+  subtle: "bg-bg-2 border-border",
 };
 
 /**
- * The app's single "liquid glass" material: a translucent solid fill, a
- * hairline solid border, heavy backdrop blur, and a soft inset top highlight
- * that reads as a specular edge — the same recipe real frosted-glass UI uses,
- * with no gradient anywhere. Depth and color come from what's blurred behind
- * the surface (see AmbientBackground), not from anything painted on it.
- * Every card/sheet/nav composes this rather than re-implementing blur CSS.
+ * The app's single card material: a solid opaque fill, a thick solid black
+ * border, and a hard offset shadow — no blur, no translucency, no gradient.
+ * Every card/sheet/nav composes this rather than re-implementing the look.
  */
 export const GlassSurface = forwardRef<HTMLDivElement, GlassSurfaceProps>(
   ({ tone = "default", radius = "lg", interactive = false, className, style, whileTap, children, ...rest }, ref) => {
     return (
       <motion.div
         ref={ref}
-        whileTap={interactive ? whileTap ?? { scale: 0.985 } : whileTap}
+        whileTap={interactive ? whileTap ?? { x: 3, y: 3 } : whileTap}
         transition={{ type: "spring", stiffness: 500, damping: 32 }}
         className={cn(
-          "relative border backdrop-blur-2xl",
+          "relative border-[2.5px]",
           radiusClass[radius],
           toneClass[tone],
-          interactive && "cursor-pointer transition-[background-color,box-shadow] duration-200 hover:bg-white/[0.07]",
+          interactive && "cursor-pointer",
           className,
         )}
         style={{
-          boxShadow:
-            "0 24px 60px -20px rgba(0,0,0,0.6), inset 0 1px 0 0 rgba(255,255,255,0.09)",
+          boxShadow: "6px 6px 0 0 var(--border)",
           ...style,
         }}
         {...rest}

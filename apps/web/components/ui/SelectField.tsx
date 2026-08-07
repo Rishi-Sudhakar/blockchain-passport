@@ -13,17 +13,18 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
     const inputId = id ?? label.toLowerCase().replace(/\s+/g, "-");
     return (
       <div className="space-y-1.5">
-        <label htmlFor={inputId} className="text-[13px] font-medium text-ink-2">
+        <label htmlFor={inputId} className="text-[13px] font-bold text-ink-2">
           {label}
         </label>
         <select
           ref={ref}
           id={inputId}
           className={cn(
-            "h-12 w-full rounded-[16px] border border-white/[0.1] bg-white/[0.04] px-4 text-[15px] text-ink-0",
-            "outline-none transition-colors duration-150 focus:border-accent-teal/60 focus:bg-white/[0.06]",
+            "h-12 w-full rounded-[14px] border-[2.5px] border-border bg-bg-1 px-4 text-[15px] font-medium text-ink-0",
+            "outline-none transition-transform duration-150 focus:-translate-y-0.5",
             className,
           )}
+          style={{ boxShadow: "3px 3px 0 0 var(--border)" }}
           {...rest}
         >
           {options.map((o) => (

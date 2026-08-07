@@ -18,11 +18,11 @@ export function PassportListCard({ passport, index = 0 }: { passport: Passport; 
       >
         <GlassCard interactive className="flex items-center justify-between gap-4">
           <div className="min-w-0 flex-1">
-            <p className="truncate text-[15px] font-semibold text-ink-0">
+            <p className="truncate text-[15px] font-extrabold text-ink-0">
               {passport.category === "battery" ? "Battery passport" : passport.category}
             </p>
-            <p className="mt-0.5 font-mono text-[12px] text-ink-2">{passport.publicCode}</p>
-            <p className="mt-1 text-[12px] text-ink-3">Updated {formatDate(passport.updatedAt)}</p>
+            <p className="mt-0.5 font-mono text-[12px] font-bold text-ink-2">{passport.publicCode}</p>
+            <p className="mt-1 text-[12px] font-semibold text-ink-3">Updated {formatDate(passport.updatedAt)}</p>
           </div>
           <StatusBadge status={passport.status} />
         </GlassCard>

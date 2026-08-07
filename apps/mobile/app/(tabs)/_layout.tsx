@@ -1,7 +1,6 @@
-import { BlurView } from "expo-blur";
 import { Redirect, Tabs } from "expo-router";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { CertifyIcon, HomeIcon, PassportsIcon, ProfileIcon } from "@/components/shell/TabIcons";
+import { ActivityIndicator, View } from "react-native";
+import { FloatingTabBar } from "@/components/shell/FloatingTabBar";
 import { useSession } from "@/lib/auth/session";
 import { colors } from "@/theme/tokens";
 
@@ -10,7 +9,7 @@ export default function TabsLayout() {
 
   if (isLoading) {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: colors.bg0 }}>
         <ActivityIndicator color={colors.accentTeal} />
       </View>
     );
@@ -21,56 +20,16 @@ export default function TabsLayout() {
 
   return (
     <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarShowLabel: true,
-        tabBarActiveTintColor: colors.ink0,
-        tabBarInactiveTintColor: colors.ink3,
-        tabBarStyle: styles.tabBar,
-        tabBarBackground: () => (
-          <View style={StyleSheet.absoluteFill}>
-            <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFill} />
-            <View style={styles.tabBarOverlay} />
-          </View>
-        ),
-      }}
+      tabBar={(props) => <FloatingTabBar {...props} />}
+      screenOptions={{ headerShown: false }}
     >
-      <Tabs.Screen
-        name="dashboard"
-        options={{ title: "Home", tabBarIcon: ({ color, focused }) => <HomeIcon color={String(color)} active={focused} /> }}
-      />
-      <Tabs.Screen
-        name="passports"
-        options={{ title: "Passports", tabBarIcon: ({ color, focused }) => <PassportsIcon color={String(color)} active={focused} /> }}
-      />
+      <Tabs.Screen name="dashboard" options={{ title: "Home" }} />
+      <Tabs.Screen name="passports" options={{ title: "Passports" }} />
       <Tabs.Screen
         name="certification"
-        options={{
-          title: "Review",
-          href: showCertifierTab ? undefined : null,
-          tabBarIcon: ({ color, focused }) => <CertifyIcon color={String(color)} active={focused} />,
-        }}
+        options={{ title: "Review", href: showCertifierTab ? undefined : null }}
       />
-      <Tabs.Screen
-        name="profile"
-        options={{ title: "Profile", tabBarIcon: ({ color, focused }) => <ProfileIcon color={String(color)} active={focused} /> }}
-      />
+      <Tabs.Screen name="profile" options={{ title: "Profile" }} />
     </Tabs>
   );
 }
-
-const styles = StyleSheet.create({
-  tabBar: {
-    position: "absolute",
-    borderTopWidth: 0,
-    height: 88,
-    paddingTop: 8,
-    backgroundColor: "transparent",
-  },
-  tabBarOverlay: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.35)",
-    borderTopWidth: 1,
-    borderTopColor: colors.glassBorder,
-  },
-});

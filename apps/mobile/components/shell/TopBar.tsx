@@ -2,7 +2,7 @@ import { useRouter } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useSession } from "@/lib/auth/session";
-import { colors } from "@/theme/tokens";
+import { brutal, colors } from "@/theme/tokens";
 
 export function TopBar({ title }: { title: string }) {
   const insets = useSafeAreaInsets();
@@ -27,14 +27,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 16,
   },
-  title: { fontSize: 22, fontWeight: "600", color: colors.ink0 },
+  title: { fontSize: 22, fontWeight: "800", color: colors.ink0 },
   avatar: {
     width: 36,
     height: 36,
     borderRadius: 18,
     backgroundColor: colors.accentTeal,
+    borderWidth: brutal.borderWidth - 0.5,
+    borderColor: colors.border,
     alignItems: "center",
     justifyContent: "center",
   },
-  avatarText: { fontSize: 13, fontWeight: "700", color: colors.accentTealInk },
+  avatarText: { fontSize: 13, fontWeight: "800", color: colors.accentTealInk },
 });

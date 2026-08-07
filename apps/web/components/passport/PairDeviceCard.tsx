@@ -45,8 +45,8 @@ export function PairDeviceCard() {
   return (
     <GlassCard className="space-y-4">
       <div>
-        <p className="text-[15px] font-semibold text-ink-0">Pair the mobile app</p>
-        <p className="mt-1 text-[12px] text-ink-3">
+        <p className="text-[15px] font-extrabold text-ink-0">Pair the mobile app</p>
+        <p className="mt-1 text-[12px] font-semibold text-ink-3">
           Open the Passport app on your phone, choose &ldquo;Pair with a code&rdquo;, and enter the
           code below (or scan it) within 5 minutes.
         </p>
@@ -61,11 +61,11 @@ export function PairDeviceCard() {
             exit={{ opacity: 0 }}
             className="flex flex-col items-center gap-4 py-2"
           >
-            <div className="rounded-[16px] bg-white p-3">
-              <QRCodeSVG value={pairing.code} size={128} bgColor="#ffffff" fgColor="#05070a" />
+            <div className="rounded-[16px] border-[2.5px] border-border bg-white p-3">
+              <QRCodeSVG value={pairing.code} size={128} bgColor="#ffffff" fgColor="#16171b" />
             </div>
-            <p className="font-mono text-[28px] font-semibold tracking-[0.3em] text-ink-0">{pairing.code}</p>
-            <p className="text-[12px] text-ink-3">Expires in {remaining}s</p>
+            <p className="font-mono text-[28px] font-extrabold tracking-[0.3em] text-ink-0">{pairing.code}</p>
+            <p className="text-[12px] font-semibold text-ink-3">Expires in {remaining}s</p>
           </motion.div>
         ) : (
           <motion.div key="button" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -76,7 +76,7 @@ export function PairDeviceCard() {
         )}
       </AnimatePresence>
 
-      {error && <p className="text-[13px] text-danger">{error}</p>}
+      {error && <p className="text-[13px] font-semibold text-danger">{error}</p>}
     </GlassCard>
   );
 }

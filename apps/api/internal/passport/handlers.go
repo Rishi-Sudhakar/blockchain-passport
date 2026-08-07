@@ -67,7 +67,7 @@ func (h *Handlers) Create(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handlers) List(w http.ResponseWriter, r *http.Request) {
 	user, _ := identity.ContextUser(r.Context())
-	list, err := h.svc.ListMine(r.Context(), user)
+	list, err := h.svc.ListVisible(r.Context(), user)
 	if err != nil {
 		writeServiceError(w, err)
 		return

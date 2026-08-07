@@ -23,12 +23,12 @@ export default function DashboardPage() {
   return (
     <div>
       <TopBar title={`Hi, ${user?.displayName.split(" ")[0] ?? ""}`} />
-      <div className="space-y-6 px-5">
+      <div className="space-y-8 px-5">
         {!isCertifier && (
           <GlassCard className="flex items-center gap-5">
             <ComplianceRing progress={progress} size={92} strokeWidth={8} label={`${published}/${total}`} sublabel="published" />
             <div className="flex-1 space-y-3">
-              <p className="text-[14px] leading-snug text-ink-1">
+              <p className="text-[14px] font-semibold leading-snug text-ink-1">
                 {total === 0
                   ? "Issue your first digital product passport to get started."
                   : `${published} of ${total} passports are live and verifiable.`}
@@ -44,10 +44,10 @@ export default function DashboardPage() {
           <Link href="/certification/queue">
             <GlassCard interactive className="flex items-center justify-between">
               <div>
-                <p className="text-[15px] font-semibold text-ink-0">Certification queue</p>
-                <p className="text-[13px] text-ink-2">Passports awaiting your review</p>
+                <p className="text-[15px] font-extrabold text-ink-0">Certification queue</p>
+                <p className="text-[13px] font-semibold text-ink-2">Passports awaiting your review</p>
               </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-warning/15 text-[15px] font-semibold text-warning">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border-[2px] border-border bg-warning text-[15px] font-extrabold text-ink-0">
                 {queue?.length ?? 0}
               </div>
             </GlassCard>
@@ -56,8 +56,11 @@ export default function DashboardPage() {
 
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-[15px] font-semibold text-ink-0">Recent passports</h2>
-            <Link href="/passports" className="text-[13px] font-medium text-ink-2 hover:text-ink-0">
+            <h2 className="text-[15px] font-extrabold text-ink-0">Recent passports</h2>
+            <Link
+              href="/passports"
+              className="rounded-full border-[2px] border-border bg-bg-1 px-3 py-1 text-[12px] font-bold text-ink-0"
+            >
               See all
             </Link>
           </div>
@@ -69,7 +72,7 @@ export default function DashboardPage() {
               </>
             )}
             {!isLoading && (passports?.length ?? 0) === 0 && (
-              <GlassCard className="text-center text-[13px] text-ink-2">
+              <GlassCard className="text-center text-[13px] font-semibold text-ink-2">
                 No passports yet.
               </GlassCard>
             )}

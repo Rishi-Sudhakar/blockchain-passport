@@ -20,8 +20,8 @@ export function AuthShell({
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="mb-8 space-y-2">
-          <h1 className="text-[28px] font-semibold tracking-tight text-ink-0">{title}</h1>
-          {subtitle && <p className="text-[15px] text-ink-2">{subtitle}</p>}
+          <h1 className="text-[28px] font-black tracking-tight text-ink-0">{title}</h1>
+          {subtitle && <p className="text-[15px] font-semibold text-ink-2">{subtitle}</p>}
         </div>
         {children}
       </motion.div>

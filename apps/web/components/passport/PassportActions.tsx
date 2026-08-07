@@ -69,10 +69,10 @@ export function PassportActions({
   if (passport.status === "submitted" && isCertifier) {
     return (
       <ActionCard error={error}>
-        <p className="mb-3 text-[13px] font-semibold text-ink-2">Certifier review</p>
+        <p className="mb-3 text-[13px] font-extrabold text-ink-2">Certifier review</p>
         <TextAreaField
           label="Notes"
-          placeholder="Compliance notes for this decision…"
+          placeholder="Compliance notes for this decision..."
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
         />
@@ -91,7 +91,7 @@ export function PassportActions({
   if (passport.status === "submitted" && isManufacturerOwner) {
     return (
       <ActionCard error={error}>
-        <p className="text-center text-[13px] text-ink-2">Awaiting certifier review.</p>
+        <p className="text-center text-[13px] font-semibold text-ink-2">Awaiting certifier review.</p>
       </ActionCard>
     );
   }
@@ -130,7 +130,7 @@ function ActionCard({ error, children }: { error: string | null; children: React
   return (
     <GlassCard>
       {children}
-      {error && <p className="mt-3 text-[13px] text-danger">{error}</p>}
+      {error && <p className="mt-3 text-[13px] font-semibold text-danger">{error}</p>}
     </GlassCard>
   );
 }

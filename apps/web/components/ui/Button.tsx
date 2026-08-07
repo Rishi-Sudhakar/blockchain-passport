@@ -14,56 +14,47 @@ interface ButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
   fullWidth?: boolean;
 }
 
-// Every non-ghost variant is the same glass material — translucent fill +
-// backdrop blur + a hairline top highlight — just tinted differently. No
-// colored box-shadow glow on any of them; only a plain neutral-black shadow
-// for lift, same as GlassSurface.
-const glassShadow = "shadow-[0_10px_24px_-10px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.14)]";
-
+// Neo-brutalist buttons: solid opaque fill, thick black border, hard black
+// offset shadow. Pressing a button walks it into its own shadow (translate
+// + shadow shrink) rather than just scaling down — the classic brutalist
+// "push the button in" feel. No colored glow on any variant.
 const variantClass: Record<Variant, string> = {
-  primary: cn(
-    "font-semibold text-accent-teal border border-accent-teal/35 bg-accent-teal/[0.14] backdrop-blur-xl",
-    "hover:bg-accent-teal/[0.2]",
-    glassShadow,
-  ),
-  glass: cn(
-    "text-ink-0 border border-white/[0.14] bg-white/[0.07] backdrop-blur-xl",
-    "hover:bg-white/[0.11]",
-    glassShadow,
-  ),
-  ghost: "text-ink-1 hover:text-ink-0 hover:bg-white/[0.06]",
-  danger: cn(
-    "font-semibold text-danger border border-danger/35 bg-danger/[0.14] backdrop-blur-xl",
-    "hover:bg-danger/[0.2]",
-    glassShadow,
-  ),
+  primary: "font-bold text-yellow-ink border-[2.5px] border-border bg-yellow",
+  glass: "font-bold text-ink-0 border-[2.5px] border-border bg-bg-1",
+  ghost: "font-semibold text-ink-1 hover:text-ink-0 border-[2.5px] border-transparent",
+  danger: "font-bold text-ink-0 border-[2.5px] border-border bg-danger",
 };
 
 const sizeClass: Record<Size, string> = {
-  sm: "h-9 px-3.5 text-sm rounded-full gap-1.5",
-  md: "h-11 px-5 text-[15px] rounded-full gap-2",
-  lg: "h-14 px-7 text-base rounded-full gap-2",
+  sm: "h-9 px-3.5 text-sm rounded-[12px] gap-1.5",
+  md: "h-12 px-5 text-[15px] rounded-[16px] gap-2",
+  lg: "h-14 px-7 text-base rounded-[18px] gap-2",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { variant = "primary", size = "md", loading, fullWidth, disabled, className, children, ...rest },
+    { variant = "primary", size = "md", loading, fullWidth, disabled, className, style, children, ...rest },
     ref,
   ) => {
+    const flat = variant === "ghost";
     return (
       <motion.button
         ref={ref}
-        whileTap={{ scale: 0.96 }}
-        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        whileTap={flat ? undefined : { x: 4, y: 4, boxShadow: "0 0 0 0 var(--border)" }}
+        transition={{ type: "spring", stiffness: 600, damping: 34 }}
         disabled={disabled || loading}
         className={cn(
-          "inline-flex items-center justify-center font-medium select-none",
-          "disabled:opacity-40 disabled:cursor-not-allowed transition-[background-color,box-shadow] duration-150",
+          "inline-flex items-center justify-center select-none",
+          "disabled:opacity-40 disabled:cursor-not-allowed",
           variantClass[variant],
           sizeClass[size],
           fullWidth && "w-full",
           className,
         )}
+        style={{
+          boxShadow: flat ? "none" : "5px 5px 0 0 var(--border)",
+          ...style,
+        }}
         {...rest}
       >
         {loading ? (

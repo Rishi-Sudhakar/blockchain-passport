@@ -63,15 +63,15 @@ export default function ProfilePage() {
   return (
     <div>
       <TopBar title="Profile" />
-      <div className="space-y-6 px-5">
+      <div className="space-y-8 px-5">
         <GlassCard className="flex items-center gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-teal text-lg font-semibold text-accent-teal-ink shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5)]">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full border-[2.5px] border-border bg-accent-teal text-lg font-extrabold text-accent-teal-ink">
             {user.displayName.slice(0, 1).toUpperCase()}
           </div>
           <div>
-            <p className="text-[16px] font-semibold text-ink-0">{user.displayName}</p>
-            <p className="text-[13px] text-ink-2">{user.email}</p>
-            <span className="mt-1 inline-block rounded-full bg-white/[0.08] px-2 py-0.5 text-[11px] font-medium text-ink-1">
+            <p className="text-[16px] font-extrabold text-ink-0">{user.displayName}</p>
+            <p className="text-[13px] font-semibold text-ink-2">{user.email}</p>
+            <span className="mt-1 inline-block rounded-full border-[2px] border-border bg-bg-2 px-2 py-0.5 text-[11px] font-bold text-ink-0">
               {roleLabel[user.role] ?? user.role}
             </span>
           </div>
@@ -81,36 +81,36 @@ export default function ProfilePage() {
 
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-[15px] font-semibold text-ink-0">Signing keys</h3>
+            <h3 className="text-[15px] font-extrabold text-ink-0">Signing keys</h3>
             {!hasLocalKey && (
               <Button size="sm" variant="glass" loading={settingUp} onClick={onAddDevice}>
                 Add this device
               </Button>
             )}
           </div>
-          <p className="mb-3 text-[12px] text-ink-3">
+          <p className="mb-3 text-[12px] font-semibold text-ink-3">
             Each device you sign in from gets its own key that notarizes the passport actions you take there.
             Keys never leave the device they were created on.
           </p>
           <div className="space-y-2">
-            {isLoading && <GlassCard className="text-[13px] text-ink-2">Loading…</GlassCard>}
+            {isLoading && <GlassCard className="text-[13px] font-semibold text-ink-2">Loading...</GlassCard>}
             {keys?.map((key) => {
               const isThisDevice = localAddresses.includes(key.address);
               return (
                 <GlassCard key={key.id} className="flex items-center justify-between py-3">
                   <div>
-                    <p className="text-[14px] font-medium text-ink-0">
+                    <p className="text-[14px] font-bold text-ink-0">
                       {key.deviceLabel} {isThisDevice && <span className="text-ink-3">(this device)</span>}
                     </p>
-                    <p className="font-mono text-[11px] text-ink-3">{truncateMiddle(key.address, 10)}</p>
-                    <p className="text-[11px] text-ink-3">Added {formatDate(key.createdAt)}</p>
+                    <p className="font-mono text-[11px] font-semibold text-ink-3">{truncateMiddle(key.address, 10)}</p>
+                    <p className="text-[11px] font-semibold text-ink-3">Added {formatDate(key.createdAt)}</p>
                   </div>
                   {key.revokedAt ? (
                     <StatusBadge status="end_of_life" />
                   ) : (
                     <button
                       onClick={() => onRevoke(key.id)}
-                      className="text-[12px] font-medium text-danger hover:underline"
+                      className="text-[12px] font-bold text-danger hover:underline"
                     >
                       Revoke
                     </button>

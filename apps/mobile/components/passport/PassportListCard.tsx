@@ -24,7 +24,7 @@ export function PassportListCard({ passport }: { passport: Passport }) {
 
 const styles = StyleSheet.create({
   row: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 12 },
-  title: { fontSize: 15, fontWeight: "600", color: colors.ink0 },
+  title: { fontSize: 15, fontWeight: "800", color: colors.ink0 },
   code: { fontSize: 12, color: colors.ink2, marginTop: 3, fontFamily: "monospace" },
   date: { fontSize: 12, color: colors.ink3, marginTop: 4 },
 });

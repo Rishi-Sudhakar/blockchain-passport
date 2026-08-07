@@ -1,45 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  /* Base surface layers — near-black, not pure black, so glass has something to refract. */
-  --bg-0: #05070a;
-  --bg-1: #0b0f16;
-  --bg-2: #11161f;
+  /* Light neo-brutalism: warm cream background, solid white cards, thick
+     black borders, hard black offset shadows — no blur, no translucency,
+     no gradients. Token names kept stable even though the palette flipped
+     from dark to light, since components already reference them by name. */
+  --bg-0: #f4eee2;
+  --bg-1: #ffffff;
+  --bg-2: #fbf6ea;
 
-  --ink-0: #f5f7fa;
-  --ink-1: #c7ccd6;
-  --ink-2: #8b93a3;
-  --ink-3: #5b6272;
+  --ink-0: #16171b;
+  --ink-1: #44464e;
+  --ink-2: #6c6e77;
+  --ink-3: #93959e;
 
-  /* Two solid accents, used separately (never blended into a gradient):
-     teal for primary actions/success, violet for secondary emphasis. */
-  --accent-teal: #2ee6d1;
-  --accent-teal-ink: #04211d;
+  /* Yellow is the primary CTA color; teal is a secondary accent (status
+     chips, chain-of-custody marks, links) — never blended together. */
+  --yellow: #ffcb3d;
+  --yellow-ink: #16171b;
+  --accent-teal: #3fe0c9;
+  --accent-teal-ink: #16171b;
   --accent-violet: #8b7cf5;
 
-  --success: #35d68a;
-  --warning: #f2b84b;
-  --danger: #f0566b;
+  --success: #5fd98a;
+  --warning: #ff9f43;
+  --danger: #ff5e62;
 
-  /* Glass surface: translucent solid fill + hairline solid border + blur scale. */
-  --glass-fill: rgba(255, 255, 255, 0.045);
-  --glass-fill-strong: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-border-strong: rgba(255, 255, 255, 0.18);
-  --glass-highlight: rgba(255, 255, 255, 0.65);
+  --border: #16171b;
+  --border-muted: rgba(22, 23, 27, 0.2);
 
-  --blur-sm: 12px;
-  --blur-md: 24px;
-  --blur-lg: 40px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --radius-button: 16px;
 
-  --radius-sm: 14px;
-  --radius-md: 20px;
-  --radius-lg: 28px;
-  --radius-xl: 32px;
-
-  --shadow-ambient: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
-  --shadow-inset-hairline: inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
-  --shadow-inset-hairline-strong: inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+  /* Every card/button/chip uses this exact hard offset shadow. */
+  --shadow-hard: 6px 6px 0 0 var(--border);
+  --shadow-hard-sm: 4px 4px 0 0 var(--border);
 
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -53,18 +51,21 @@
   --color-ink-1: var(--ink-1);
   --color-ink-2: var(--ink-2);
   --color-ink-3: var(--ink-3);
+  --color-yellow: var(--yellow);
+  --color-yellow-ink: var(--yellow-ink);
   --color-accent-teal: var(--accent-teal);
   --color-accent-teal-ink: var(--accent-teal-ink);
   --color-accent-violet: var(--accent-violet);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-danger: var(--danger);
+  --color-border: var(--border);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }
 
 * {
-  border-color: var(--glass-border);
+  border-color: var(--border);
 }
 
 html,
@@ -81,8 +82,8 @@ body {
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.92);
-  color: #05070a;
+  background: var(--ink-0);
+  color: var(--bg-0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -103,7 +104,7 @@ body {
 }
 
 /* Skeleton loading: a solid-color opacity pulse rather than a sweeping
-   gradient band — same "it's alive" read, no gradient involved. */
+   gradient band. */
 @keyframes skeleton-pulse {
   0%,
   100% {

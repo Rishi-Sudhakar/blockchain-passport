@@ -29,7 +29,7 @@ export function ComplianceRing({
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="rgba(255,255,255,0.08)"
+          stroke="var(--border-muted)"
           strokeWidth={strokeWidth}
         />
         <motion.circle
@@ -37,7 +37,7 @@ export function ComplianceRing({
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="var(--accent-teal)"
+          stroke="var(--yellow)"
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}

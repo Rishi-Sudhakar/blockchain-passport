@@ -38,11 +38,11 @@ export function PassportDetailClient({ id }: { id: string }) {
       <div className="space-y-6 px-5">
         <motion.div layoutId={`passport-${passport.id}`} className="flex items-start justify-between">
           <div>
-            <h2 className="text-[20px] font-semibold text-ink-0">
+            <h2 className="text-[20px] font-black text-ink-0">
               {currentData?.productIdentifier.batteryModel || "Untitled battery"}
             </h2>
-            <p className="mt-0.5 font-mono text-[13px] text-ink-2">{passport.publicCode}</p>
-            <p className="mt-1 text-[12px] text-ink-3">Created {formatDate(passport.createdAt)}</p>
+            <p className="mt-0.5 font-mono text-[13px] font-bold text-ink-2">{passport.publicCode}</p>
+            <p className="mt-1 text-[12px] font-semibold text-ink-3">Created {formatDate(passport.createdAt)}</p>
           </div>
           <StatusBadge status={passport.status} className="mt-1" />
         </motion.div>
@@ -53,19 +53,19 @@ export function PassportDetailClient({ id }: { id: string }) {
 
         {currentData && (
           <div>
-            <h3 className="mb-3 text-[15px] font-semibold text-ink-0">Compliance data</h3>
+            <h3 className="mb-3 text-[15px] font-extrabold text-ink-0">Compliance data</h3>
             <PassportDataSections data={currentData} />
           </div>
         )}
 
         <div>
-          <h3 className="mb-3 text-[15px] font-semibold text-ink-0">Chain of custody</h3>
+          <h3 className="mb-3 text-[15px] font-extrabold text-ink-0">Chain of custody</h3>
           <ChainOfCustodyTimeline records={ledger ?? []} verify={verify} />
         </div>
 
         <button
           onClick={() => router.push("/passports")}
-          className="mb-6 w-full text-center text-[13px] text-ink-3 hover:text-ink-1"
+          className="mb-6 w-full text-center text-[13px] font-bold text-ink-3 hover:text-ink-1"
         >
           ← Back to passports
         </button>

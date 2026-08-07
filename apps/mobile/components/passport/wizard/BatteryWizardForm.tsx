@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Screen } from "@/components/shell/Screen";
 import { TopBar } from "@/components/shell/TopBar";
 import { Button } from "@/components/ui/Button";
 import { ChipSelect } from "@/components/ui/ChipSelect";
@@ -53,7 +54,7 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <Screen>
       <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + 140 }}>
         <TopBar title={title} />
         <View style={styles.content}>
@@ -173,7 +174,7 @@ export function BatteryWizardForm({ title, initialValues, submitLabel, onSubmit 
           <Button title={submitLabel} style={{ flex: 1 }} loading={submitting} onPress={submit} />
         )}
       </View>
-    </View>
+    </Screen>
   );
 }
 
@@ -181,7 +182,7 @@ function ReviewRow({ label, value }: { label: string; value: string }) {
   return (
     <GlassCard style={styles.reviewRow}>
       <Text style={styles.reviewLabel}>{label}</Text>
-      <Text style={styles.reviewValue}>{value || "—"}</Text>
+      <Text style={styles.reviewValue}>{value || "Not provided"}</Text>
     </GlassCard>
   );
 }
@@ -189,7 +190,7 @@ function ReviewRow({ label, value }: { label: string; value: string }) {
 const styles = StyleSheet.create({
   content: { paddingHorizontal: 20, gap: 16 },
   card: { gap: 14 },
-  cardTitle: { fontSize: 13, fontWeight: "600", color: colors.ink2 },
+  cardTitle: { fontSize: 13, fontWeight: "800", color: colors.ink2 },
   grid2: { flexDirection: "row", flexWrap: "wrap", gap: 12 },
   gridItem: { width: "47%" },
   reviewRow: { flexDirection: "row", justifyContent: "space-between", paddingVertical: 12 },
@@ -200,9 +201,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 12,
     paddingHorizontal: 20,
-    paddingTop: 12,
-    borderTopWidth: 1,
-    borderTopColor: colors.glassBorder,
+    paddingTop: 14,
+    borderTopWidth: 2.5,
+    borderTopColor: colors.border,
     backgroundColor: colors.bg0,
   },
 });

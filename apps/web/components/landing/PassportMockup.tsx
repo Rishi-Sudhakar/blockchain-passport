@@ -25,17 +25,17 @@ export function PassportMockup() {
       <GlassCard tone="strong" className="space-y-5">
         <div className="flex items-start justify-between">
           <div>
-            <p className="text-[15px] font-semibold text-ink-0">Cell Module 4680</p>
-            <p className="mt-0.5 font-mono text-[11px] text-ink-2">BP-8F3KQ-2NWXR</p>
+            <p className="text-[15px] font-extrabold text-ink-0">Cell Module 4680</p>
+            <p className="mt-0.5 font-mono text-[11px] font-bold text-ink-2">BP-8F3KQ-2NWXR</p>
           </div>
           <StatusBadge status="published" />
         </div>
 
         <div className="space-y-2">
           {rows.map((row) => (
-            <div key={row.label} className="flex items-center justify-between border-b border-white/[0.06] py-1.5 last:border-0">
-              <span className="text-[12px] text-ink-2">{row.label}</span>
-              <span className="text-[12px] font-medium text-ink-0">{row.value}</span>
+            <div key={row.label} className="flex items-center justify-between border-b-[2px] border-[var(--border-muted)] py-1.5 last:border-0">
+              <span className="text-[12px] font-semibold text-ink-2">{row.label}</span>
+              <span className="text-[12px] font-bold text-ink-0">{row.value}</span>
             </div>
           ))}
         </div>
@@ -43,9 +43,9 @@ export function PassportMockup() {
         <div className="flex items-center gap-2">
           {chainSteps.map((step, i) => (
             <div key={step} className="flex flex-1 items-center gap-2">
-              <span className="h-2 w-2 shrink-0 rounded-full bg-accent-teal" />
-              <span className="text-[10px] font-medium text-ink-3">{step}</span>
-              {i < chainSteps.length - 1 && <span className="h-px flex-1 bg-white/[0.12]" />}
+              <span className="h-2.5 w-2.5 shrink-0 rounded-full border-[1.5px] border-border bg-yellow" />
+              <span className="text-[10px] font-bold text-ink-3">{step}</span>
+              {i < chainSteps.length - 1 && <span className="h-[2px] flex-1 bg-[var(--border-muted)]" />}
             </div>
           ))}
         </div>

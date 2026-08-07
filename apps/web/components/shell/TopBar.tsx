@@ -15,11 +15,11 @@ function initials(name: string): string {
 export function TopBar({ title }: { title: string }) {
   const { user } = useSession();
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between px-5 pt-[max(env(safe-area-inset-top),20px)] pb-4 backdrop-blur-xl bg-bg-0/70">
-      <h1 className="text-xl font-semibold tracking-tight text-ink-0">{title}</h1>
+    <header className="sticky top-0 z-30 flex items-center justify-between px-5 pt-[max(env(safe-area-inset-top),20px)] pb-4 bg-bg-0">
+      <h1 className="text-xl font-extrabold tracking-tight text-ink-0">{title}</h1>
       <Link
         href="/profile"
-        className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-teal text-xs font-semibold text-accent-teal-ink shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5)]"
+        className="flex h-9 w-9 items-center justify-center rounded-full border-[2px] border-border bg-accent-teal text-xs font-bold text-accent-teal-ink"
       >
         {user ? initials(user.displayName) : ""}
       </Link>

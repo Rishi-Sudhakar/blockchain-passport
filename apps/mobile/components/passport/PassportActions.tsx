@@ -120,7 +120,7 @@ export function PassportActions({
 const styles = StyleSheet.create({
   card: { gap: 12 },
   rowGap: { flexDirection: "row", gap: 12 },
-  label: { fontSize: 13, fontWeight: "600", color: colors.ink2 },
-  centerNote: { textAlign: "center", color: colors.ink2, fontSize: 13 },
-  error: { fontSize: 13, color: colors.danger },
+  label: { fontSize: 13, fontWeight: "800", color: colors.ink2 },
+  centerNote: { textAlign: "center", color: colors.ink2, fontSize: 13, fontWeight: "600" },
+  error: { fontSize: 13, fontWeight: "700", color: colors.danger },
 });

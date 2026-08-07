@@ -31,13 +31,13 @@ export function ComplianceRing({ progress, size = 120, strokeWidth = 10, label, 
   return (
     <View style={{ width: size, height: size, alignItems: "center", justifyContent: "center" }}>
       <Svg width={size} height={size} style={{ transform: [{ rotate: "-90deg" }] }}>
-        <Circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={strokeWidth} />
+        <Circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke={colors.borderMuted} strokeWidth={strokeWidth} />
         <AnimatedCircle
           cx={size / 2}
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke={colors.accentTeal}
+          stroke={colors.yellow}
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}
@@ -56,6 +56,6 @@ export function ComplianceRing({ progress, size = 120, strokeWidth = 10, label, 
 
 const styles = StyleSheet.create({
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
-  label: { fontSize: 18, fontWeight: "600", color: colors.ink0 },
+  label: { fontSize: 18, fontWeight: "800", color: colors.ink0 },
   sublabel: { fontSize: 11, color: colors.ink2, marginTop: 2 },
 });

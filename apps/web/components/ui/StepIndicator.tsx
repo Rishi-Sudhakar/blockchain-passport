@@ -15,9 +15,9 @@ export function StepIndicator({ steps, current }: StepIndicatorProps) {
         const state = i < current ? "done" : i === current ? "active" : "upcoming";
         return (
           <div key={step} className="flex flex-1 flex-col gap-2">
-            <div className="h-1.5 rounded-full bg-white/[0.08] overflow-hidden">
+            <div className="h-1.5 rounded-full bg-[var(--border-muted)] overflow-hidden">
               <motion.div
-                className="h-full rounded-full bg-accent-teal"
+                className="h-full rounded-full bg-yellow"
                 initial={false}
                 animate={{ width: state === "upcoming" ? "0%" : "100%" }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}

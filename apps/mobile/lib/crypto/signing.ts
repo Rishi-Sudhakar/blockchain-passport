@@ -46,11 +46,16 @@ export async function finalizeSigningKeyAddress(address: string): Promise<void> 
 }
 
 /**
- * Signs a server-provided hash (base64). @noble/curves' sign() takes the
- * digest directly with no internal hashing, so to match the backend's
- * cryptoutil.VerifyWebCryptoECDSA (which expects SHA-256(message) — the
- * convention forced by the *web* client's use of WebCrypto, which always
- * hashes internally) we replicate that hash step explicitly here.
+ * Signs a server-provided hash (base64) to match the backend's
+ * cryptoutil.VerifyWebCryptoECDSA, which expects a signature over
+ * SHA-256(message) — the convention forced by the *web* client's use of
+ * WebCrypto, which always hashes its input internally. We replicate that
+ * hash step explicitly here since @noble/curves can sign a raw digest too —
+ * but its `sign()` defaults to `prehash: true`, meaning it would ALSO hash
+ * internally by default, silently signing SHA-256(digest) instead of
+ * `digest` itself. That mismatch made every mobile-signed transaction fail
+ * server-side signature verification 100% of the time until this was found
+ * (`{ prehash: false }` tells it to sign the digest as-is).
  */
 export async function signHash(hashB64: string): Promise<{ signature: string; address: string }> {
   const key = await getSigningKey();
@@ -60,6 +65,6 @@ export async function signHash(hashB64: string): Promise<{ signature: string; ad
   const message = base64ToBytes(hashB64);
   const digest = sha256(message);
   const privateKeyBytes = hexToBytes(key.privateKeyHex);
-  const signature = p256.sign(digest, privateKeyBytes);
+  const signature = p256.sign(digest, privateKeyBytes, { prehash: false });
   return { signature: bytesToBase64(signature), address: key.address };
 }

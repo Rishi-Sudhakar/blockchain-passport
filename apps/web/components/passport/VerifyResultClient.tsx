@@ -17,7 +17,7 @@ export function VerifyResultClient({ code }: { code: string }) {
   if (isLoading) {
     return (
       <main className="flex min-h-screen items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/20 border-t-accent-teal" />
+        <div className="h-8 w-8 animate-spin rounded-full border-[3px] border-[var(--border-muted)] border-t-ink-0" />
       </main>
     );
   }
@@ -26,7 +26,7 @@ export function VerifyResultClient({ code }: { code: string }) {
     const notFound = error instanceof ApiError && error.status === 404;
     return (
       <main className="flex min-h-screen flex-col items-center justify-center gap-4 px-6 text-center">
-        <p className="text-[18px] font-semibold text-ink-0">
+        <p className="text-[18px] font-extrabold text-ink-0">
           {notFound ? "No passport found for this code." : "Something went wrong."}
         </p>
         <Link href="/verify">
@@ -48,18 +48,15 @@ export function VerifyResultClient({ code }: { code: string }) {
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <div
-          className={`flex items-center gap-3 rounded-[20px] border p-4 ${
-            chainVerify.valid ? "border-success/30 bg-success/10" : "border-danger/30 bg-danger/10"
-          }`}
+          className="flex items-center gap-3 rounded-[18px] border-[2.5px] border-border p-4"
+          style={{ backgroundColor: chainVerify.valid ? "var(--success)" : "var(--danger)" }}
         >
-          <span className={`text-2xl ${chainVerify.valid ? "text-success" : "text-danger"}`}>
-            {chainVerify.valid ? "✓" : "!"}
-          </span>
+          <span className="text-2xl font-black text-ink-0">{chainVerify.valid ? "✓" : "!"}</span>
           <div>
-            <p className={`text-[15px] font-semibold ${chainVerify.valid ? "text-success" : "text-danger"}`}>
+            <p className="text-[15px] font-extrabold text-ink-0">
               {chainVerify.valid ? "Verified authentic" : "Integrity check failed"}
             </p>
-            <p className="text-[12px] text-ink-2">
+            <p className="text-[12px] font-semibold text-ink-0">
               {chainVerify.valid
                 ? `${chainVerify.length} ledger record${chainVerify.length === 1 ? "" : "s"}, no tampering detected.`
                 : chainVerify.reason}
@@ -69,19 +66,19 @@ export function VerifyResultClient({ code }: { code: string }) {
 
         <GlassCard className="flex items-start justify-between">
           <div>
-            <h1 className="text-[19px] font-semibold text-ink-0">
+            <h1 className="text-[19px] font-extrabold text-ink-0">
               {currentData?.productIdentifier.batteryModel || "Digital product passport"}
             </h1>
-            <p className="mt-0.5 font-mono text-[13px] text-ink-2">{passport.publicCode}</p>
-            <p className="mt-1 text-[12px] text-ink-3">Issued {formatDate(passport.createdAt)}</p>
+            <p className="mt-0.5 font-mono text-[13px] font-bold text-ink-2">{passport.publicCode}</p>
+            <p className="mt-1 text-[12px] font-semibold text-ink-3">Issued {formatDate(passport.createdAt)}</p>
           </div>
           <StatusBadge status={passport.status} />
         </GlassCard>
 
         {currentData && <PassportDataSections data={currentData} />}
 
-        <Link href="/verify" className="block pb-6 text-center text-[13px] text-ink-3 hover:text-ink-1">
-          Verify another passport →
+        <Link href="/verify" className="block pb-6 text-center text-[13px] font-bold text-ink-3 hover:text-ink-1">
+          Verify another passport
         </Link>
       </motion.div>
     </main>

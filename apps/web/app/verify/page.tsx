@@ -37,8 +37,8 @@ export default function VerifyLandingPage() {
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="space-y-2 text-center">
-          <h1 className="text-[26px] font-semibold tracking-tight text-ink-0">Verify a passport</h1>
-          <p className="text-[14px] text-ink-2">Scan a QR code or enter a passport code.</p>
+          <h1 className="text-[26px] font-black tracking-tight text-ink-0">Verify a passport</h1>
+          <p className="text-[14px] font-semibold text-ink-2">Scan a QR code or enter a passport code.</p>
         </div>
 
         <Button size="lg" fullWidth onClick={() => setScanning(true)}>
@@ -46,9 +46,9 @@ export default function VerifyLandingPage() {
         </Button>
 
         <div className="flex items-center gap-3">
-          <div className="h-px flex-1 bg-white/[0.1]" />
-          <span className="text-[12px] text-ink-3">or</span>
-          <div className="h-px flex-1 bg-white/[0.1]" />
+          <div className="h-[2px] flex-1 bg-[var(--border-muted)]" />
+          <span className="text-[12px] font-bold text-ink-3">or</span>
+          <div className="h-[2px] flex-1 bg-[var(--border-muted)]" />
         </div>
 
         <form

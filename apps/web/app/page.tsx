@@ -31,7 +31,7 @@ const steps = [
   },
   {
     title: "Certify",
-    description: "A certifier reviews the submission and signs off — approval or rejection is recorded permanently.",
+    description: "A certifier reviews the submission and signs off. The approval or rejection is recorded permanently.",
     icon: <IconCertify />,
   },
   {
@@ -44,17 +44,17 @@ const steps = [
 const features = [
   {
     title: "Tamper-evident ledger",
-    description: "Every state change is hashed, chained, and signed — altering history breaks the chain visibly.",
+    description: "Every state change is hashed, chained, and signed. Altering history breaks the chain visibly.",
     icon: <IconLink />,
   },
   {
     title: "Passkey security",
-    description: "Face ID, Touch ID, or Windows Hello — no passwords, and your signing key never leaves your device.",
+    description: "Face ID, Touch ID, or Windows Hello. No passwords, and your signing key never leaves your device.",
     icon: <IconFingerprint />,
   },
   {
     title: "Built for EU Battery Regulation",
-    description: "Materials, carbon footprint, recycled content, durability, and due diligence — modeled end to end.",
+    description: "Materials, carbon footprint, recycled content, durability, and due diligence, modeled end to end.",
     icon: <IconFlag />,
   },
   {
@@ -64,7 +64,7 @@ const features = [
   },
   {
     title: "Public verification",
-    description: "No account needed — scan a code or look one up to see verified compliance data instantly.",
+    description: "No account needed. Scan a code or look one up to see verified compliance data instantly.",
     icon: <IconScan />,
   },
   {
@@ -107,14 +107,14 @@ export default function LandingPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className="text-[36px] font-semibold leading-[1.1] tracking-tight text-ink-0 sm:text-[46px] lg:text-[52px]">
+          <h1 className="text-[36px] font-black leading-[1.1] tracking-tight text-ink-0 sm:text-[46px] lg:text-[52px]">
             Every product,
             <br />
-            <span className="text-accent-teal">verifiably compliant.</span>
+            <span className="bg-yellow px-2 text-ink-0">verifiably compliant.</span>
           </h1>
-          <p className="mx-auto max-w-md text-[16px] leading-relaxed text-ink-2 lg:mx-0">
+          <p className="mx-auto max-w-md text-[16px] font-medium leading-relaxed text-ink-2 lg:mx-0">
             Issue digital product passports, get them certified, and let anyone verify their
-            chain of custody — secured by a tamper-evident, cryptographically signed ledger.
+            chain of custody, secured by a tamper-evident, cryptographically signed ledger.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
             <Link href="/auth/register">
@@ -139,8 +139,8 @@ export default function LandingPage() {
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
         <FadeUp>
           <div className="mb-10 max-w-lg">
-            <p className="text-[13px] font-semibold uppercase tracking-wider text-accent-teal">How it works</p>
-            <h2 className="mt-2 text-[26px] font-semibold tracking-tight text-ink-0">
+            <p className="text-[13px] font-extrabold uppercase tracking-wider text-accent-teal">How it works</p>
+            <h2 className="mt-2 text-[26px] font-black tracking-tight text-ink-0">
               From factory floor to public record, in three steps.
             </h2>
           </div>
@@ -156,8 +156,8 @@ export default function LandingPage() {
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
         <FadeUp>
           <div className="mb-10 max-w-lg">
-            <p className="text-[13px] font-semibold uppercase tracking-wider text-accent-teal">Why it holds up</p>
-            <h2 className="mt-2 text-[26px] font-semibold tracking-tight text-ink-0">
+            <p className="text-[13px] font-extrabold uppercase tracking-wider text-accent-teal">Why it holds up</p>
+            <h2 className="mt-2 text-[26px] font-black tracking-tight text-ink-0">
               Compliance data nobody can quietly rewrite.
             </h2>
           </div>
@@ -174,19 +174,22 @@ export default function LandingPage() {
         <FadeUp>
           <GlassCard tone="strong" className="flex flex-col items-center gap-6 p-10 text-center lg:flex-row lg:text-left">
             <div className="flex-1 space-y-3">
-              <h2 className="text-[24px] font-semibold tracking-tight text-ink-0">
+              <h2 className="text-[24px] font-black tracking-tight text-ink-0">
                 Every change is hashed, signed, and chained.
               </h2>
-              <p className="max-w-md text-[14px] leading-relaxed text-ink-2">
+              <p className="max-w-md text-[14px] font-medium leading-relaxed text-ink-2">
                 Tamper with a single stored record and the chain visibly breaks at that exact
-                point — verifiable by anyone, instantly, without trusting us.
+                point, verifiable by anyone, instantly, without trusting us.
               </p>
             </div>
-            <div className="flex items-center gap-2 rounded-[16px] border border-white/[0.1] bg-white/[0.04] px-5 py-4">
-              <span className="text-xl text-success">✓</span>
+            <div
+              className="flex items-center gap-2 rounded-[16px] border-[2.5px] border-border bg-success px-5 py-4"
+              style={{ boxShadow: "4px 4px 0 0 var(--border)" }}
+            >
+              <span className="text-xl font-black text-ink-0">✓</span>
               <div className="text-left">
-                <p className="text-[13px] font-semibold text-success">Chain verified</p>
-                <p className="text-[11px] text-ink-3">4 records, no tampering detected</p>
+                <p className="text-[13px] font-extrabold text-ink-0">Chain verified</p>
+                <p className="text-[11px] font-semibold text-ink-0">4 records, no tampering detected</p>
               </div>
             </div>
           </GlassCard>
@@ -196,8 +199,8 @@ export default function LandingPage() {
       {/* Final CTA */}
       <section className="mx-auto w-full max-w-6xl px-6 py-16 text-center">
         <FadeUp>
-          <h2 className="text-[28px] font-semibold tracking-tight text-ink-0">Ready to issue your first passport?</h2>
-          <p className="mx-auto mt-2 max-w-sm text-[14px] text-ink-2">
+          <h2 className="text-[28px] font-black tracking-tight text-ink-0">Ready to issue your first passport?</h2>
+          <p className="mx-auto mt-2 max-w-sm text-[14px] font-medium text-ink-2">
             Free to try. Passkey sign-up takes under a minute.
           </p>
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -213,13 +216,13 @@ export default function LandingPage() {
         </FadeUp>
       </section>
 
-      <footer className="border-t border-white/[0.08] px-6 py-8">
+      <footer className="border-t-[2.5px] border-border px-6 py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-2">
             <BrandMark size={22} />
-            <span className="text-[13px] font-medium text-ink-1">Passport</span>
+            <span className="text-[13px] font-bold text-ink-1">Passport</span>
           </div>
-          <p className="text-[12px] text-ink-3">Demo build — not for production compliance use.</p>
+          <p className="text-[12px] font-semibold text-ink-3">Demo build, not for production compliance use.</p>
         </div>
       </footer>
     </main>

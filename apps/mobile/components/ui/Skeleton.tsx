@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import type { StyleProp, ViewStyle } from "react-native";
 import { StyleSheet, View } from "react-native";
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from "react-native-reanimated";
+import { colors } from "@/theme/tokens";
 import { GlassCard } from "./GlassCard";
 
 export function Skeleton({ style }: { style?: StyleProp<ViewStyle> }) {
@@ -15,7 +16,7 @@ export function Skeleton({ style }: { style?: StyleProp<ViewStyle> }) {
 
   return (
     <Animated.View
-      style={[{ borderRadius: 14, backgroundColor: "rgba(255,255,255,0.07)" }, animatedStyle, style]}
+      style={[{ borderRadius: 14, backgroundColor: colors.borderMuted }, animatedStyle, style]}
     />
   );
 }

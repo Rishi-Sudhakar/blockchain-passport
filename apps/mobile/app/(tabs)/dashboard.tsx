@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Screen } from "@/components/shell/Screen";
 import { Button } from "@/components/ui/Button";
 import { ComplianceRing } from "@/components/ui/ComplianceRing";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -24,6 +25,7 @@ export default function DashboardScreen() {
   const progress = total > 0 ? published / total : 0;
 
   return (
+    <Screen>
     <ScrollView
       contentContainerStyle={[styles.content, { paddingTop: insets.top + 20, paddingBottom: insets.bottom + 100 }]}
     >
@@ -76,28 +78,31 @@ export default function DashboardScreen() {
         {passports?.slice(0, 4).map((p) => <PassportListCard key={p.id} passport={p} />)}
       </View>
     </ScrollView>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
   content: { paddingHorizontal: 20, gap: 20 },
-  greeting: { fontSize: 24, fontWeight: "600", color: colors.ink0 },
+  greeting: { fontSize: 24, fontWeight: "800", color: colors.ink0 },
   summaryCard: { flexDirection: "row", alignItems: "center", gap: 16 },
   summaryText: { flex: 1, gap: 10 },
   summaryBody: { fontSize: 13, color: colors.ink1, lineHeight: 19 },
   queueRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  queueTitle: { fontSize: 15, fontWeight: "600", color: colors.ink0 },
+  queueTitle: { fontSize: 15, fontWeight: "800", color: colors.ink0 },
   queueSubtitle: { fontSize: 13, color: colors.ink2, marginTop: 2 },
   queueBadge: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: "rgba(242,184,75,0.15)",
+    backgroundColor: colors.warning,
+    borderWidth: 2,
+    borderColor: colors.border,
     alignItems: "center",
     justifyContent: "center",
   },
-  queueBadgeText: { color: colors.warning, fontWeight: "700", fontSize: 14 },
+  queueBadgeText: { color: colors.bg0, fontWeight: "800", fontSize: 14 },
   sectionHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  sectionTitle: { fontSize: 15, fontWeight: "600", color: colors.ink0 },
+  sectionTitle: { fontSize: 15, fontWeight: "800", color: colors.ink0 },
   empty: { textAlign: "center", color: colors.ink2, fontSize: 13 },
 });

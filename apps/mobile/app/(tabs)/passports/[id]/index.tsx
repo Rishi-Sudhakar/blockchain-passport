@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Screen } from "@/components/shell/Screen";
 import { TopBar } from "@/components/shell/TopBar";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { ChainOfCustodyTimeline } from "@/components/passport/ChainOfCustodyTimeline";
@@ -23,9 +24,9 @@ export default function PassportDetailScreen() {
 
   if (isLoading || !data) {
     return (
-      <View style={styles.center}>
+      <Screen style={styles.center}>
         <ActivityIndicator color={colors.accentTeal} />
-      </View>
+      </Screen>
     );
   }
 
@@ -33,6 +34,7 @@ export default function PassportDetailScreen() {
   const currentData = versions.at(-1)?.data as BatteryData | undefined;
 
   return (
+    <Screen>
     <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}>
       <TopBar title="Passport" />
       <View style={styles.content}>
@@ -62,6 +64,7 @@ export default function PassportDetailScreen() {
         </View>
       </View>
     </ScrollView>
+    </Screen>
   );
 }
 
@@ -69,8 +72,8 @@ const styles = StyleSheet.create({
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
   content: { paddingHorizontal: 20, gap: 20 },
   header: { flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", gap: 12 },
-  title: { fontSize: 20, fontWeight: "600", color: colors.ink0 },
+  title: { fontSize: 20, fontWeight: "800", color: colors.ink0 },
   code: { fontSize: 13, color: colors.ink2, marginTop: 3, fontFamily: "monospace" },
   date: { fontSize: 12, color: colors.ink3, marginTop: 4 },
-  sectionTitle: { fontSize: 15, fontWeight: "600", color: colors.ink0 },
+  sectionTitle: { fontSize: 15, fontWeight: "800", color: colors.ink0 },
 });

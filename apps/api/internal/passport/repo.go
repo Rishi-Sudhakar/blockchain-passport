@@ -70,10 +70,13 @@ func (r *Repo) GetPassport(ctx context.Context, id uuid.UUID) (*Passport, error)
 		 FROM passports WHERE id = $1`, id))
 }
 
+// GetPassportByPublicCode matches case-insensitively: a human retyping a code
+// off a physical label, or a QR scanner returning it in a different case,
+// shouldn't produce a false "not found" for what is otherwise a valid code.
 func (r *Repo) GetPassportByPublicCode(ctx context.Context, code string) (*Passport, error) {
 	return r.scanPassport(r.db.QueryRow(ctx,
 		`SELECT id, public_code, category, status, organization_id, current_version_id, created_by, created_at, updated_at
-		 FROM passports WHERE public_code = $1`, code))
+		 FROM passports WHERE upper(public_code) = upper($1)`, code))
 }
 
 func (r *Repo) scanPassport(row pgx.Row) (*Passport, error) {
@@ -94,6 +97,10 @@ func (r *Repo) ListByOrganization(ctx context.Context, orgID uuid.UUID) ([]Passp
 
 func (r *Repo) ListByStatus(ctx context.Context, status Status) ([]Passport, error) {
 	return r.list(ctx, `WHERE status = $1 ORDER BY updated_at ASC`, status)
+}
+
+func (r *Repo) ListAll(ctx context.Context) ([]Passport, error) {
+	return r.list(ctx, `ORDER BY updated_at DESC`)
 }
 
 func (r *Repo) list(ctx context.Context, where string, args ...any) ([]Passport, error) {

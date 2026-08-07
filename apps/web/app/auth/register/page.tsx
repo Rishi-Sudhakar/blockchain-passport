@@ -90,16 +90,15 @@ export default function RegisterPage() {
             <TextField label="Email" type="email" placeholder="you@company.com" {...register("email")} error={errors.email?.message} />
 
             <div className="space-y-1.5">
-              <span className="text-[13px] font-medium text-ink-2">You are a</span>
+              <span className="text-[13px] font-bold text-ink-2">You are a</span>
               <div className="grid grid-cols-2 gap-2">
                 {(["manufacturer", "certifier"] as const).map((r) => (
                   <label
                     key={r}
-                    className={`flex h-12 cursor-pointer items-center justify-center rounded-[16px] border text-[14px] font-medium transition-colors ${
-                      role === r
-                        ? "border-accent-teal/60 bg-accent-teal/10 text-ink-0"
-                        : "border-white/[0.1] bg-white/[0.04] text-ink-2"
+                    className={`flex h-12 cursor-pointer items-center justify-center rounded-[14px] border-[2.5px] border-border text-[14px] font-bold transition-transform ${
+                      role === r ? "bg-yellow text-yellow-ink" : "bg-bg-1 text-ink-2"
                     }`}
+                    style={{ boxShadow: role === r ? "3px 3px 0 0 var(--border)" : "none" }}
                   >
                     <input type="radio" value={r} {...register("role")} className="hidden" />
                     {r === "manufacturer" ? "Manufacturer" : "Certifier"}
@@ -130,11 +129,11 @@ export default function RegisterPage() {
             animate={{ opacity: 1 }}
             className="flex flex-col items-center gap-4 py-10 text-center"
           >
-            <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/20 border-t-accent-teal" />
-            <p className="text-[15px] text-ink-1">
+            <div className="h-10 w-10 animate-spin rounded-full border-[3px] border-[var(--border-muted)] border-t-ink-0" />
+            <p className="text-[15px] font-semibold text-ink-1">
               {stage === "passkey"
-                ? "Confirm with Face ID, Touch ID, or your device passkey…"
-                : "Setting up this device's signing key…"}
+                ? "Confirm with Face ID, Touch ID, or your device passkey..."
+                : "Setting up this device's signing key..."}
             </p>
           </motion.div>
         )}

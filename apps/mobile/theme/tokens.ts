@@ -1,37 +1,52 @@
-// Mirrors apps/web/app/globals.css exactly — same palette, same "no gradients,
-// no colored glows" rule. Native glass here comes from expo-blur's BlurView
-// (a real UIVisualEffectView on iOS) rather than CSS backdrop-filter.
+// Light neo-brutalism: warm cream background, solid white cards, thick black
+// borders, hard black offset shadows, bold saturated color blocks. No blur,
+// no gradients anywhere — depth comes entirely from the border + shadow, not
+// translucency. Keeping the original token names (bg0, accentTeal, ...) even
+// though the palette flipped from dark to light, since every screen already
+// references them by name — only the values (and which color plays "primary"
+// vs "secondary") changed.
 export const colors = {
-  bg0: "#05070a",
-  bg1: "#0b0f16",
-  bg2: "#11161f",
+  bg0: "#F4EEE2",
+  bg1: "#FFFFFF",
+  bg2: "#FBF6EA",
 
-  ink0: "#f5f7fa",
-  ink1: "#c7ccd6",
-  ink2: "#8b93a3",
-  ink3: "#5b6272",
+  ink0: "#16171B",
+  ink1: "#44464E",
+  ink2: "#6C6E77",
+  ink3: "#93959E",
 
-  accentTeal: "#2ee6d1",
-  accentTealInk: "#04211d",
-  accentViolet: "#8b7cf5",
+  // Yellow is the primary CTA color now (matches the reference language);
+  // teal remains a secondary accent (status chips, chain-of-custody marks).
+  yellow: "#FFCB3D",
+  yellowInk: "#16171B",
+  accentTeal: "#3FE0C9",
+  accentTealInk: "#16171B",
+  accentViolet: "#8B7CF5",
 
-  success: "#35d68a",
-  warning: "#f2b84b",
-  danger: "#f0566b",
+  success: "#5FD98A",
+  warning: "#FF9F43",
+  danger: "#FF5E62",
 
-  glassBorder: "rgba(255,255,255,0.12)",
-  glassBorderStrong: "rgba(255,255,255,0.2)",
-  glassFillLight: "rgba(255,255,255,0.06)",
-  glassFillStrong: "rgba(255,255,255,0.1)",
-  hairlineHighlight: "rgba(255,255,255,0.16)",
+  border: "#16171B",
+  borderMuted: "rgba(22,23,27,0.2)",
 } as const;
 
 export const radii = {
-  sm: 14,
-  md: 20,
-  lg: 28,
-  xl: 32,
+  sm: 10,
+  md: 14,
+  lg: 18,
+  xl: 22,
+  button: 16,
   pill: 999,
+} as const;
+
+// Shared geometry for the hard offset shadow: solid black, same offset,
+// everywhere — cards, buttons, chips, the tab bar.
+export const brutal = {
+  borderWidth: 2.5,
+  shadowOffset: 6,
+  shadowOffsetSm: 4,
+  shadowColor: "#16171B",
 } as const;
 
 export const spacing = (n: number) => n * 4;

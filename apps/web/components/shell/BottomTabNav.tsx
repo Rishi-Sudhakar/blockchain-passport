@@ -78,26 +78,27 @@ export function BottomTabNav({ showCertifierTab }: { showCertifierTab: boolean }
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-40 px-4 pb-[max(env(safe-area-inset-bottom),16px)] pt-2">
-      <div className="mx-auto flex max-w-md items-stretch justify-between rounded-[28px] border border-white/[0.1] bg-black/40 backdrop-blur-2xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] px-1.5 py-1.5">
+      <div
+        className="mx-auto flex max-w-md items-stretch justify-between rounded-[22px] border-[2.5px] border-border bg-bg-1 px-1.5 py-1.5"
+        style={{ boxShadow: "6px 6px 0 0 var(--border)" }}
+      >
         {tabs.map((tab) => {
           const active = pathname === tab.href || pathname.startsWith(tab.href + "/");
           return (
             <Link
               key={tab.href}
               href={tab.href}
-              className="relative flex flex-1 flex-col items-center gap-0.5 rounded-[22px] py-2 text-ink-3"
+              className="relative flex flex-1 flex-col items-center gap-1 rounded-[16px] py-2 text-ink-0"
             >
-              {active && (
-                <motion.div
-                  layoutId="tab-pill"
-                  className="absolute inset-0 rounded-[22px] bg-white/[0.09]"
-                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                />
-              )}
-              <span className={cn("relative z-10", active ? "text-ink-0" : "text-ink-3")}>
-                {tab.icon(active)}
-              </span>
-              <span className={cn("relative z-10 text-[11px] font-medium", active ? "text-ink-0" : "text-ink-3")}>
+              <span className="relative z-10">{tab.icon(active)}</span>
+              <span className="relative inline-flex items-center justify-center text-[11px] font-bold text-ink-0">
+                {active && (
+                  <motion.span
+                    layoutId="tab-highlight"
+                    className="absolute inset-x-[-4px] inset-y-[-2px] -z-10 rounded-[6px] bg-yellow"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  />
+                )}
                 {tab.label}
               </span>
             </Link>

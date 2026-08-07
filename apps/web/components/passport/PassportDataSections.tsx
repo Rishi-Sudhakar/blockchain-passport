@@ -5,10 +5,10 @@ import type { BatteryData } from "@/lib/api/types";
 
 function Row({ label, value }: { label: string; value: string | number }) {
   return (
-    <div className="flex items-center justify-between border-b border-white/[0.06] py-2.5 last:border-0">
-      <span className="text-[13px] text-ink-2">{label}</span>
-      <span className="max-w-[60%] text-right text-[13px] font-medium text-ink-0">
-        {value === "" || value === undefined ? "—" : value}
+    <div className="flex items-center justify-between border-b-[2px] border-[var(--border-muted)] py-2.5 last:border-0">
+      <span className="text-[13px] font-semibold text-ink-2">{label}</span>
+      <span className="max-w-[60%] text-right text-[13px] font-bold text-ink-0">
+        {value === "" || value === undefined ? "Not provided" : value}
       </span>
     </div>
   );
@@ -17,7 +17,7 @@ function Row({ label, value }: { label: string; value: string | number }) {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <GlassCard>
-      <p className="mb-1 text-[13px] font-semibold text-ink-2">{title}</p>
+      <p className="mb-1 text-[13px] font-extrabold text-ink-2">{title}</p>
       {children}
     </GlassCard>
   );

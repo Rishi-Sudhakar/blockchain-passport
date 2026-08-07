@@ -1,12 +1,8 @@
 export function BrandMark({ size = 24 }: { size?: number }) {
   return (
     <div
-      className="flex shrink-0 items-center justify-center rounded-[9px] bg-accent-teal"
-      style={{
-        width: size,
-        height: size,
-        boxShadow: "inset 0 1px 0 0 rgba(255,255,255,0.5)",
-      }}
+      className="flex shrink-0 items-center justify-center rounded-[9px] border-[2px] border-border bg-accent-teal"
+      style={{ width: size, height: size }}
     >
       <svg viewBox="0 0 24 24" fill="none" style={{ width: size * 0.58, height: size * 0.58 }} className="text-accent-teal-ink">
         <path

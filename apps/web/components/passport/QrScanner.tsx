@@ -34,17 +34,17 @@ export function QrScanner({ onResult, onClose }: QrScannerProps) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 backdrop-blur-xl"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-ink-0"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="relative h-72 w-72 overflow-hidden rounded-[28px] border border-white/[0.15]">
+      <div className="relative h-72 w-72 overflow-hidden rounded-[22px] border-[3px] border-bg-0">
         <video ref={videoRef} className="h-full w-full object-cover" muted playsInline />
-        <div className="pointer-events-none absolute inset-6 rounded-[20px] border-2 border-accent-teal/70" />
+        <div className="pointer-events-none absolute inset-6 rounded-[16px] border-[3px] border-yellow" />
       </div>
-      {error && <p className="mt-4 max-w-xs text-center text-[13px] text-danger">{error}</p>}
-      <button onClick={onClose} className="mt-6 text-[14px] font-medium text-ink-1">
+      {error && <p className="mt-4 max-w-xs text-center text-[13px] font-semibold text-danger">{error}</p>}
+      <button onClick={onClose} className="mt-6 text-[14px] font-bold text-bg-0">
         Cancel
       </button>
     </motion.div>

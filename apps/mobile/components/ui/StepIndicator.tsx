@@ -33,8 +33,15 @@ function Segment({ label, filled, active }: { label: string; filled: boolean; ac
 const styles = StyleSheet.create({
   row: { flexDirection: "row", gap: 8 },
   segment: { flex: 1, gap: 6 },
-  track: { height: 5, borderRadius: 999, backgroundColor: "rgba(255,255,255,0.08)", overflow: "hidden" },
-  fill: { height: "100%", borderRadius: 999, backgroundColor: colors.accentTeal },
-  label: { fontSize: 11, fontWeight: "500", color: colors.ink3 },
+  track: {
+    height: 8,
+    borderRadius: 999,
+    backgroundColor: colors.bg1,
+    borderWidth: 1.5,
+    borderColor: colors.border,
+    overflow: "hidden",
+  },
+  fill: { height: "100%", borderRadius: 999, backgroundColor: colors.yellow },
+  label: { fontSize: 11, fontWeight: "700", color: colors.ink3 },
   labelActive: { color: colors.ink0 },
 });

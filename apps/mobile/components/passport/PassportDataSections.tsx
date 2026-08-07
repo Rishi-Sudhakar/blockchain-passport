@@ -8,7 +8,7 @@ function Row({ label, value }: { label: string; value: string | number }) {
     <View style={styles.row}>
       <Text style={styles.rowLabel}>{label}</Text>
       <Text style={styles.rowValue} numberOfLines={2}>
-        {value === "" || value === undefined ? "—" : String(value)}
+        {value === "" || value === undefined ? "Not provided" : String(value)}
       </Text>
     </View>
   );
@@ -73,14 +73,14 @@ export function PassportDataSections({ data }: { data: BatteryData }) {
 }
 
 const styles = StyleSheet.create({
-  sectionTitle: { fontSize: 13, fontWeight: "600", color: colors.ink2, marginBottom: 4 },
+  sectionTitle: { fontSize: 13, fontWeight: "800", color: colors.ink2, marginBottom: 4 },
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
     gap: 12,
     paddingVertical: 8,
     borderBottomWidth: 1,
-    borderBottomColor: "rgba(255,255,255,0.06)",
+    borderBottomColor: colors.borderMuted,
   },
   rowLabel: { fontSize: 13, color: colors.ink2, flexShrink: 0 },
   rowValue: { fontSize: 13, fontWeight: "500", color: colors.ink0, flex: 1, textAlign: "right" },

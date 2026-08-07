@@ -1,59 +1,75 @@
-import { BlurView } from "expo-blur";
 import type { StyleProp, ViewStyle } from "react-native";
 import { StyleSheet, View } from "react-native";
-import { colors, radii } from "@/theme/tokens";
+import { brutal, colors, radii } from "@/theme/tokens";
 
 type Tone = "default" | "strong" | "subtle";
 type Radius = keyof typeof radii;
 
 const toneFill: Record<Tone, string> = {
-  default: "rgba(255,255,255,0.05)",
-  strong: "rgba(255,255,255,0.09)",
-  subtle: "rgba(255,255,255,0.03)",
-};
-
-const toneBorder: Record<Tone, string> = {
-  default: colors.glassBorder,
-  strong: colors.glassBorderStrong,
-  subtle: "rgba(255,255,255,0.07)",
+  default: colors.bg1,
+  strong: colors.bg2,
+  subtle: colors.bg0,
 };
 
 interface GlassSurfaceProps {
   tone?: Tone;
   radius?: Radius;
+  /** Color of the solid block offset behind the card. Black by default. */
+  shadowColor?: string;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
 }
 
 /**
- * The app's liquid-glass material, native this time: a real BlurView
- * (UIVisualEffectView on iOS) instead of CSS backdrop-filter, a translucent
- * solid overlay for fill, a solid hairline border, and a 1px top highlight
- * standing in for what an inset box-shadow does on web. No gradients.
+ * The app's card material: a solid opaque fill, a thick black border, and a
+ * hard-edged solid-color block offset behind it. The shadow is an
+ * absoluteFillObject sibling (guaranteed pixel-identical size to the face,
+ * whatever that size ends up being) shifted purely via `transform` — not a
+ * manually-sized view with negative right/bottom insets, which could drift
+ * out of sync with the face for anything whose size isn't fixed up front
+ * (text-dependent buttons, etc.) and was the cause of the shadow
+ * "artifacting" seen on some buttons.
  */
-export function GlassSurface({ tone = "default", radius = "lg", style, children }: GlassSurfaceProps) {
+export function GlassSurface({
+  tone = "default",
+  radius = "lg",
+  shadowColor = brutal.shadowColor,
+  style,
+  children,
+}: GlassSurfaceProps) {
   return (
-    <View style={[{ borderRadius: radii[radius], overflow: "hidden" }, style]}>
-      <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
+    <View style={styles.wrapper}>
       <View
+        pointerEvents="none"
         style={[
-          StyleSheet.absoluteFill,
-          { backgroundColor: toneFill[tone], borderWidth: 1, borderColor: toneBorder[tone], borderRadius: radii[radius] },
+          StyleSheet.absoluteFillObject,
+          {
+            backgroundColor: shadowColor,
+            borderRadius: radii[radius],
+            transform: [{ translateX: brutal.shadowOffset }, { translateY: brutal.shadowOffset }],
+          },
         ]}
       />
-      <View style={styles.topHighlight} />
-      {children}
+      <View
+        style={[
+          styles.face,
+          { backgroundColor: toneFill[tone], borderRadius: radii[radius] },
+          style,
+        ]}
+      >
+        {children}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  topHighlight: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 1,
-    backgroundColor: colors.hairlineHighlight,
+  wrapper: {
+    // No fixed sizing — the face view (normal flow) defines the box; the
+    // shadow view fills that exact same box, then shifts via transform.
+  },
+  face: {
+    borderWidth: brutal.borderWidth,
+    borderColor: colors.border,
   },
 });

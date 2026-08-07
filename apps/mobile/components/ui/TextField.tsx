@@ -1,6 +1,6 @@
 import type { StyleProp, ViewStyle } from "react-native";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { colors, radii } from "@/theme/tokens";
+import { brutal, colors, radii } from "@/theme/tokens";
 
 interface TextFieldProps {
   label: string;
@@ -48,16 +48,17 @@ export function TextField({
 }
 
 const styles = StyleSheet.create({
-  label: { fontSize: 13, fontWeight: "500", color: colors.ink2 },
+  label: { fontSize: 13, fontWeight: "700", color: colors.ink2 },
   input: {
-    height: 48,
-    borderRadius: radii.md - 4,
-    borderWidth: 1,
-    borderColor: colors.glassBorder,
-    backgroundColor: "rgba(255,255,255,0.04)",
+    height: 50,
+    borderRadius: radii.md,
+    borderWidth: brutal.borderWidth,
+    borderColor: colors.border,
+    backgroundColor: colors.bg1,
     paddingHorizontal: 16,
     fontSize: 15,
+    fontWeight: "600",
     color: colors.ink0,
   },
-  error: { fontSize: 12, color: colors.danger },
+  error: { fontSize: 12, fontWeight: "700", color: colors.danger },
 });

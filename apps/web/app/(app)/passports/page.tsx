@@ -33,7 +33,7 @@ export default function PassportsPage() {
           </>
         )}
         {!isLoading && (passports?.length ?? 0) === 0 && (
-          <GlassCard className="text-center text-[13px] text-ink-2">No passports yet.</GlassCard>
+          <GlassCard className="text-center text-[13px] font-semibold text-ink-2">No passports yet.</GlassCard>
         )}
         {passports?.map((p, i) => <PassportListCard key={p.id} passport={p} index={i} />)}
       </div>
