@@ -7,3 +7,10 @@ apps/api/*.exe
 
 # Node (apps/web has its own, this catches anything at the root)
 node_modules/
+.pgdata
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+go.sum
