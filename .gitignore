@@ -14,3 +14,7 @@ package-lock.json
 yarn.lock
 pnpm-lock.yaml
 go.sum
+
+# Env files (mobile has no framework-provided .gitignore for these)
+apps/mobile/.env
+apps/mobile/.env.local
