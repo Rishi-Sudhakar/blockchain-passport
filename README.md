@@ -17,20 +17,78 @@ signing logic held up on both.
 
 ## Screenshots
 
-### Web
+### Web — manufacturer
 
-| Certifier — approver view | Manufacturer — certificate adder view |
-| --- | --- |
-| ![Web approver view](docs/screenshots/web-approver.png) | ![Web certificate adder view](docs/screenshots/web-certificate-adder.png) |
+<table>
+<tr>
+<td width="33%"><img src="docs/screenshots/web/01-landing.png" width="100%"><br><sub><b>Landing page</b></sub></td>
+<td width="33%"><img src="docs/screenshots/web/02-manufacturer-dashboard.png" width="100%"><br><sub><b>Dashboard</b></sub></td>
+<td width="33%"><img src="docs/screenshots/web/03-new-passport-wizard.png" width="100%"><br><sub><b>New passport wizard</b></sub></td>
+</tr>
+<tr>
+<td width="33%"><img src="docs/screenshots/web/04-published-passport-actions.png" width="100%"><br><sub><b>Published passport — amend or retire</b></sub></td>
+<td width="33%"><img src="docs/screenshots/web/05-manufacturer-profile-pairing.png" width="100%"><br><sub><b>Profile — pair the mobile app</b></sub></td>
+<td width="33%"></td>
+</tr>
+</table>
 
-### Mobile
+### Web — certifier
 
-| Certifier — approver view | Manufacturer — certificate adder view |
-| --- | --- |
-| ![Mobile approver view](docs/screenshots/mobile-approver.png) | ![Mobile certificate adder view](docs/screenshots/mobile-certificate-adder.png) |
+An end-to-end approval, screenshotted live: review a submission, read its compliance data,
+check the chain of custody before approving, then approve and watch the chain grow a new
+signed record.
 
-*(Screenshots to be added — drop the corresponding PNGs into `docs/screenshots/` using the
-filenames above.)*
+<table>
+<tr>
+<td width="25%"><img src="docs/screenshots/web/06-passport-list-certifier.png" width="100%"><br><sub><b>1. Passport list</b></sub></td>
+<td width="25%"><img src="docs/screenshots/web/07-certifier-review.png" width="100%"><br><sub><b>2. Review — approve or reject</b></sub></td>
+<td width="25%"><img src="docs/screenshots/web/08-compliance-data.png" width="100%"><br><sub><b>3. Compliance data</b></sub></td>
+<td width="25%"><img src="docs/screenshots/web/09-chain-before-approval.png" width="100%"><br><sub><b>4. Chain — before approval</b></sub></td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td width="25%"><img src="docs/screenshots/web/10-chain-after-approval.png" width="100%"><br><sub><b>5. Chain — after approval</b></sub></td>
+<td width="25%"><img src="docs/screenshots/web/11-certified-passport-qr.png" width="100%"><br><sub><b>6. Certified passport — QR</b></sub></td>
+<td width="25%"><img src="docs/screenshots/web/12-certifier-profile-pairing.png" width="100%"><br><sub><b>7. Profile — pair the mobile app</b></sub></td>
+<td width="25%"></td>
+</tr>
+</table>
+
+### Mobile — manufacturer
+
+<table>
+<tr>
+<td width="20%"><img src="docs/screenshots/mobile/01-manufacturer-dashboard.png" width="100%"><br><sub><b>Dashboard</b></sub></td>
+<td width="20%"><img src="docs/screenshots/mobile/02-new-passport-wizard.png" width="100%"><br><sub><b>New passport wizard</b></sub></td>
+<td width="20%"><img src="docs/screenshots/mobile/03-publish-passport.png" width="100%"><br><sub><b>Publish a certified passport</b></sub></td>
+<td width="20%"><img src="docs/screenshots/mobile/04-published-passport-actions.png" width="100%"><br><sub><b>Amend or retire</b></sub></td>
+<td width="20%"><img src="docs/screenshots/mobile/05-manufacturer-profile-pairing.png" width="100%"><br><sub><b>Profile — pair this device</b></sub></td>
+</tr>
+</table>
+
+### Mobile — certifier
+
+<table>
+<tr>
+<td width="25%"><img src="docs/screenshots/mobile/06-certifier-dashboard.png" width="100%"><br><sub><b>Dashboard</b></sub></td>
+<td width="25%"><img src="docs/screenshots/mobile/07-certification-queue.png" width="100%"><br><sub><b>Certification queue</b></sub></td>
+<td width="25%"><img src="docs/screenshots/mobile/08-certified-passport-certifier-view.png" width="100%"><br><sub><b>Certified passport</b></sub></td>
+<td width="25%"><img src="docs/screenshots/mobile/09-certifier-profile-pairing.png" width="100%"><br><sub><b>Profile — pair this device</b></sub></td>
+</tr>
+</table>
+
+### Public verification (mobile, no login)
+
+Reached by scanning a passport's QR code directly — no account needed either way.
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/mobile/10-public-verify-integrity.png" width="100%"><br><sub><b>Chain integrity result</b></sub></td>
+<td width="50%"><img src="docs/screenshots/mobile/11-public-verify-compliance-data.png" width="100%"><br><sub><b>Full compliance data</b></sub></td>
+</tr>
+</table>
 
 ## Why
 
